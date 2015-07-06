@@ -1,0 +1,161 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!doctype html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="Polymer Starter Kit" />
+  <title>Myanmar</title>
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <!-- Chrome for Android theme color -->
+  <meta name="theme-color" content="#303F9F">
+
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Tile color for Win8 -->
+  <meta name="msapplication-TileColor" content="#3372DF">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Myanmar Party App">
+  <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Polymer Starter Kit">
+  <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+
+  <!-- Tile icon for Win8 (144x144) -->
+  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild-->
+
+  <!-- build:js bower_components/webcomponentsjs/webcomponents.min.js -->
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <!-- endbuild -->
+
+  <!-- will be replaced with elements/elements.vulcanized.html -->
+  <link rel="import" href="elements/elements.html">
+  <!-- endreplace-->
+</head>
+
+<body unresolved class="fullbleed layout vertical">
+<template is="dom-bind" id="app">
+  <neon-animated-pages selected="0"
+                     entry-animation="slide-from-right-animation"
+                     exit-animation="slide-left-animation">
+  <neon-animatable id="page-list-party">
+      <paper-drawer-panel id="paperDrawerPanel" forceNarrow>
+    <div drawer>
+
+      <!-- Drawer Toolbar
+      <paper-toolbar id="drawerToolbar">
+        <span>Language</span>
+      </paper-toolbar>
+      -->
+      <!-- Drawer Content -->
+      <h3 id="menu-language" class="paper-font-title">Language</h3>
+      <paper-menu class="list" attr-for-selected="data-route" selected="{{route}}" on-iron-select="onMenuSelect">
+        <paper-item>
+          <iron-icon icon="hardware:keyboard-arrow-right"></iron-icon>
+          <span>Zawgyi</span>
+        </paper-item>
+
+        <paper-item>
+          <iron-icon icon="hardware:keyboard-arrow-right"></iron-icon>
+          <span>Unicode</span>
+        </paper-item>
+
+        <paper-item>
+          <iron-icon icon="hardware:keyboard-arrow-right"></iron-icon>
+          <span>English</span>
+        <paper-item>
+      </paper-menu>
+    </div>
+    <paper-header-panel main mode="standard">
+      <!-- Main Toolbar -->
+      <paper-toolbar id="mainToolbar">
+        <button tabindex="1" id="paperToggle" paper-drawer-toggle>
+          <iron-icon icon="menu" paper-drawer-toggle></iron-icon>
+        </button>
+        <span class="flex"></span>
+
+        <!-- Toolbar icons -->
+       <!-- disable search button
+       <paper-icon-button icon="search"></paper-icon-button>
+       -->
+        <div class="middle"></div>
+
+        <!-- Application name -->
+        <div class="appname bottom paper-font-display2">Myanmar Party</div>
+
+      </paper-toolbar>
+
+      <!-- Main Content -->
+      <iron-pages attr-for-selected="data-route" selected="{{route}}">
+
+        <section data-route="party">
+            <my-party></my-party>
+        </section>
+
+        <section data-route="users">
+          <paper-material elevation="1">
+            <h2 class="paper-font-display2">Users</h2>
+            <p>This is the users section</p>
+            <a href="/users/Rob">Rob</a>
+          </paper-material>
+        </section>
+
+        <section data-route="user-info">
+          <paper-material elevation="1">
+            <h2 class="paper-font-display2">
+              User:<span>{{params.name}}</span>
+            </h2>
+            <div>This is <span>{{params.name}}</span>'s section</div>
+          </paper-material>
+        </section>
+
+        <section data-route="contact">
+          <paper-material elevation="1">
+            <h2 class="paper-font-display2">Contact</h2>
+            <p>This is the contact section</p>
+          </paper-material>
+        </section>
+      </iron-pages>
+    </paper-header-panel>
+  </paper-drawer-panel>
+  </neon-animatable>
+  <neon-animatable id="page-party-detail">
+      <party-detail></party-detail>
+  </neon-animatable>
+</neon-animated-pages>
+
+
+
+</template>
+
+<!-- build:js scripts/app.js -->
+<script src="scripts/app.js"></script>
+<script type='text/javascript' id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.7.13.js'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+<!-- endbuild-->
+</body>
+
+</html>

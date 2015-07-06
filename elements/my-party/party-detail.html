@@ -1,0 +1,149 @@
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import"  href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<dom-module id="party-detail">
+	<style>
+		:host {
+	        display: block;
+	      }
+	     :host p{
+	     	margin: 0;
+	     	margin-bottom: 1em;
+	     }
+	     .content{
+	     	margin:10px 15px;
+	     }
+	    .info{
+	    	margin: 10px 0;
+	    	@apply(--layout-horizontal);
+	    	border-bottom: 1px solid #F0F0F0;
+	    	padding-bottom: 10 px;
+
+	    }
+	    .icon{
+	    	@apply(--layout-flex-2);
+	    }
+	    .text{
+	    	@apply(--layout-flex-10);
+	    	padding-left: 40px;
+	    	font-size: 0.9em;
+	    	-webkit-font-smoothing: antialiased;
+	    	font-weight: 400;
+	    }
+	    #btn-back{
+	    	position: absolute;
+	    	top:5px;
+	    	left: 15px;
+	    	color: #FFF;
+	    	padding-left: 0;
+	    }
+	    #cover{
+	    	width: 100%;
+	    	height: 170px;
+	    	overflow: visible;
+	    	margin-bottom: 30px;
+	    }
+
+	    #logo{
+	    	width:80px;
+	    	height:80px;
+	    	border-radius: 41px;
+	    	position: absolute;
+	    	bottom:0;
+	    	left: 15px;
+	    	margin-bottom: -40px;
+	    	border:1px solid #FFF;
+	    	background-color: #FFF;
+	    }
+
+	    #detail{
+
+	    }
+	    #name-container{
+	    	margin: 15px 0 30px;
+	    	padding-left: 110px;
+	    }
+	    #name-container h1{
+	    	font-size: 1em;
+
+	    }
+	    #name-container h2{
+	    	font-size: 0.9em;
+	    	font-weight: lighter;
+	    }
+	    .info iron-icon{
+	    	width: 30px;
+	    	height: 30px;
+	    	padding-left: 25px;
+	    }
+	    .gradient{
+	    	background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 1%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 50%,rgba(0,0,0,0) 78%,rgba(0,0,0,0.59) 98%,rgba(0,0,0,0.65) 100%);
+	    	position: absolute;
+	    	top: 0;
+	    	left: 0;
+	    	height: 100%;
+	    	width: 100%;
+	    }
+	</style>
+	<template>
+		<div class="container">
+			<iron-image id="cover" sizing="cover" src="{{PartyFlag}}">
+				<div class="gradient"></div>
+				<paper-icon-button id="btn-back" icon="arrow-back" on-click="back"></paper-icon-button>
+				<iron-image id="logo" sizing="cover" src="{{PartySeal}}"></iron-image>
+			</iron-image>
+
+		</div>
+		<div class="scrollable">
+			<div id="name-container" class="content">
+				<h1>{{PartyName}}</h1>
+			</div>
+			<div id="detail" class="content">
+				<div class="info">
+					<iron-icon icon="account-circle"></iron-icon>
+					<div class="text">
+						<p class="title">Chairman</p>
+						<p class="value">{{Chairman}}</p>
+						<p class="title">Leadership</p>
+						<p class="value">{{Leadership}}</p>
+					</div>
+				</div>
+				<div class="info">
+					<iron-icon icon="home"></iron-icon>
+					<div class="text">
+						<p class="title">Region</p>
+						<p class="value">{{Region}}</p>
+						<p class="title">Headquarters</p>
+						<p class="value">{{Headquarters}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</template>
+</dom-module>
+<script>
+	(function(){
+		Polymer({
+			is:"party-detail",
+			properties:{
+				PartyFlag:String,
+				PartySeal:String,
+				PartyName:String,
+				PartyNameEnglish:String,
+				Chairman:String,
+				Leadership:String,
+				Region:String,
+				Headquarters:String
+			},
+			back:function(){
+				var page=document.querySelector('neon-animated-pages');
+				page.entryAnimation="slide-from-left-animation";
+                page.exitAnimation="slide-right-animation";
+              	page.selected = 0;
+              	page.entryAnimation="slide-from-right-animation";
+                page.exitAnimation="slide-left-animation";
+			}
+		});
+	})();
+</script>
