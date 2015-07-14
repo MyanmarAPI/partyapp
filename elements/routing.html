@@ -11,11 +11,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script src="../bower_components/page/page.js"></script>
 <script>
   window.addEventListener('WebComponentsReady', function() {
+    var path=window.location.pathname;
 
     // We use Page.js for routing. This is a Micro
     // client-side router inspired by the Express router
     // More info: https://visionmedia.github.io/page.js/
-    page('/myanmarelapi/partyapp/', function () {
+    page(path, function () {
         var page=document.querySelector('neon-animated-pages');
         page.entryAnimation="slide-from-left-animation";
         page.exitAnimation="slide-right-animation";
@@ -26,7 +27,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     });
 
 
-    page('/myanmarelapi/partyapp/party/:id', function (data) {
+    page(path+'party/:id', function (data) {
       
       var partylist=document.querySelector('my-party');
       var partydetail=document.querySelector('party-detail');
