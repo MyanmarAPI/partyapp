@@ -15,25 +15,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     // We use Page.js for routing. This is a Micro
     // client-side router inspired by the Express router
     // More info: https://visionmedia.github.io/page.js/
-    page('/', function () {
-      app.route = 'party';
+    page('/myanmarelapi/partyapp/', function () {
+        var page=document.querySelector('neon-animated-pages');
+        page.entryAnimation="slide-from-left-animation";
+        page.exitAnimation="slide-right-animation";
+        app.route = 0;
+        page.entryAnimation="slide-from-right-animation";
+        page.exitAnimation="slide-left-animation";
+      
     });
 
-    page('/users', function () {
-      app.route = 'users';
-    });
 
-    page('/users/:name', function (data) {
-      app.route = 'user-info';
-      app.params = data.params;
-    });
-
-    page('/contact', function () {
-      app.route = 'contact';
-    });
-
-    page('/party/:id', function (data) {
-      app.route = 'party-detail';
+    page('/myanmarelapi/partyapp/party/:id', function (data) {
+      
+      var partylist=document.querySelector('my-party');
+      var partydetail=document.querySelector('party-detail');
+      app.party=partylist.parties[data.params['id']];
+      partydetail.loadParty();
+      console.log(app.party);
+      app.route = 1;
     });
    
     // add #! before urls

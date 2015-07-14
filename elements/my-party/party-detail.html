@@ -1,5 +1,7 @@
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import"  href="../../bower_components/iron-image/iron-image.html">
+<link rel="import"  href="../../bower_components/paper-header-panel/paper-header-panel.html">
+
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 
 <dom-module id="party-detail">
@@ -36,7 +38,8 @@
 	    	top:5px;
 	    	left: 15px;
 	    	color: #FFF;
-	    	padding-left: 0;
+	    	padding:0 10px 10px 0;
+	    	pad
 	    }
 	    #cover{
 	    	width: 100%;
@@ -57,8 +60,8 @@
 	    	background-color: #FFF;
 	    }
 
-	    #detail{
-
+	    .scrollable{
+	    	overflow-x: auto;
 	    }
 	    #name-container{
 	    	margin: 15px 0 30px;
@@ -87,10 +90,11 @@
 	    }
 	</style>
 	<template>
+		<paper-header-panel class="flex layout fit">
 		<div class="container">
 			<iron-image id="cover" sizing="cover" src="{{PartyFlag}}">
 				<div class="gradient"></div>
-				<paper-icon-button id="btn-back" icon="arrow-back" on-click="back"></paper-icon-button>
+				<a id="btn-back" href=""><paper-icon-button icon="arrow-back"></paper-icon-button></a>
 				<iron-image id="logo" sizing="cover" src="{{PartySeal}}"></iron-image>
 			</iron-image>
 
@@ -120,6 +124,7 @@
 				</div>
 			</div>
 		</div>
+		</paper-header-panel>
 	</template>
 </dom-module>
 <script>
@@ -136,13 +141,15 @@
 				Region:String,
 				Headquarters:String
 			},
-			back:function(){
-				var page=document.querySelector('neon-animated-pages');
-				page.entryAnimation="slide-from-left-animation";
-                page.exitAnimation="slide-right-animation";
-              	page.selected = 0;
-              	page.entryAnimation="slide-from-right-animation";
-                page.exitAnimation="slide-left-animation";
+			loadParty:function(){
+				  this.PartySeal=app.party.PartySeal;
+	              this.PartyFlag=app.party.PartyFlag;
+	              this.PartyName=app.party.PartyName;
+	              this.PartyNameEnglish=app.party.PartyNameEnglish;
+	              this.Chairman=app.party.Chairman;
+	              this.Leadership=app.party.Leadership;
+	              this.Region=app.party.Region;
+	              this.Headquarters=app.party.Headquarters;
 			}
 		});
 	})();

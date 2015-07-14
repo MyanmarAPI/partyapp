@@ -57,104 +57,71 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <body unresolved class="fullbleed layout vertical">
 <template is="dom-bind" id="app">
-  <neon-animated-pages selected="0"
+  <neon-animated-pages selected="{{route}}"
                      entry-animation="slide-from-right-animation"
                      exit-animation="slide-left-animation">
   <neon-animatable id="page-list-party">
       <paper-drawer-panel id="paperDrawerPanel" forceNarrow>
-    <div drawer>
+        <div drawer>
 
-      <!-- Drawer Toolbar
-      <paper-toolbar id="drawerToolbar">
-        <span>Language</span>
-      </paper-toolbar>
-      -->
-      <!-- Drawer Content -->
-      <h3 id="menu-language" class="paper-font-title">Language</h3>
-      <paper-menu class="list" attr-for-selected="data-route" selected="{{route}}" on-iron-select="onMenuSelect">
-        <paper-item>
-          <iron-icon icon="hardware:keyboard-arrow-right"></iron-icon>
-          <span>Zawgyi</span>
-        </paper-item>
+        <!-- Drawer Toolbar
+        <paper-toolbar id="drawerToolbar">
+          <span>Language</span>
+        </paper-toolbar>
+        -->
+        <!-- Drawer Content -->
+        <h3 id="menu-language" class="paper-font-title">Language</h3>
+        <paper-menu class="list" attr-for-selected="data-route" selected="{{route}}" on-iron-select="onMenuSelect">
+          <paper-item>
+            <iron-icon icon="hardware:keyboard-arrow-right"></iron-icon>
+            <span>Zawgyi</span>
+          </paper-item>
 
-        <paper-item>
-          <iron-icon icon="hardware:keyboard-arrow-right"></iron-icon>
-          <span>Unicode</span>
-        </paper-item>
+          <paper-item>
+            <iron-icon icon="hardware:keyboard-arrow-right"></iron-icon>
+            <span>Unicode</span>
+          </paper-item>
 
-        <paper-item>
-          <iron-icon icon="hardware:keyboard-arrow-right"></iron-icon>
-          <span>English</span>
-        <paper-item>
-      </paper-menu>
-    </div>
-    <paper-header-panel main mode="standard">
-      <!-- Main Toolbar -->
-      <paper-toolbar id="mainToolbar">
-        <button tabindex="1" id="paperToggle" paper-drawer-toggle>
-          <iron-icon icon="menu" paper-drawer-toggle></iron-icon>
-        </button>
-        <span class="flex"></span>
+          <paper-item>
+            <iron-icon icon="hardware:keyboard-arrow-right"></iron-icon>
+            <span>English</span>
+          <paper-item>
+        </paper-menu>
+      </div>
+      <paper-header-panel main mode="standard">
+        <!-- Main Toolbar -->
+        <paper-toolbar id="mainToolbar">
+          <button tabindex="1" id="paperToggle" paper-drawer-toggle>
+            <iron-icon icon="menu" paper-drawer-toggle></iron-icon>
+          </button>
+          <span class="flex"></span>
 
-        <!-- Toolbar icons -->
-       <!-- disable search button
-       <paper-icon-button icon="search"></paper-icon-button>
-       -->
-        <div class="middle"></div>
+          <!-- Toolbar icons -->
+         <!-- disable search button
+         <paper-icon-button icon="search"></paper-icon-button>
+         -->
+          <div class="middle"></div>
 
-        <!-- Application name -->
-        <div class="appname bottom paper-font-display2">Myanmar Party</div>
+          <!-- Application name -->
+          <div class="appname bottom paper-font-display2">Myanmar Party</div>
 
-      </paper-toolbar>
+        </paper-toolbar>
 
-      <!-- Main Content -->
-      <iron-pages attr-for-selected="data-route" selected="{{route}}">
-
-        <section data-route="party">
-            <my-party></my-party>
-        </section>
-
-        <section data-route="users">
-          <paper-material elevation="1">
-            <h2 class="paper-font-display2">Users</h2>
-            <p>This is the users section</p>
-            <a href="/users/Rob">Rob</a>
-          </paper-material>
-        </section>
-
-        <section data-route="user-info">
-          <paper-material elevation="1">
-            <h2 class="paper-font-display2">
-              User:<span>{{params.name}}</span>
-            </h2>
-            <div>This is <span>{{params.name}}</span>'s section</div>
-          </paper-material>
-        </section>
-
-        <section data-route="contact">
-          <paper-material elevation="1">
-            <h2 class="paper-font-display2">Contact</h2>
-            <p>This is the contact section</p>
-          </paper-material>
-        </section>
-      </iron-pages>
-    </paper-header-panel>
-  </paper-drawer-panel>
+        <!-- Main Content -->
+        <my-party></my-party>
+      </paper-header-panel>
+    </paper-drawer-panel>
   </neon-animatable>
   <neon-animatable id="page-party-detail">
       <party-detail></party-detail>
   </neon-animatable>
 </neon-animated-pages>
-
-
-
 </template>
-
+<platinum-sw-register auto-register>
+  <platinum-sw-cache></platinum-sw-cache>
+</platinum-sw-register>
 <!-- build:js scripts/app.js -->
 <script src="scripts/app.js"></script>
-<script type='text/javascript' id="__bs_script__">//<![CDATA[
-    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.7.13.js'><\/script>".replace("HOST", location.hostname));
-//]]></script>
 <!-- endbuild-->
 </body>
 

@@ -1,6 +1,5 @@
 <link rel="import"  href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import"  href="../../bower_components/iron-image/iron-image.html">
-<link rel="import"  href="../../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
 <dom-module id="my-party">
@@ -8,18 +7,26 @@
       :host {
         display: block;
         margin:15px 15px;
+        @apply(--layout-fit);
       }
-
+      
+      #list{
+        @apply(--layout-flex);
+      }
+      .item{
+        @apply(--layout-horizontal);
+        height: 100px;
+      }
       paper-item{
         margin-bottom: 15px;
         @apply(--layout-horizontal);
       }
       paper-item span{
         margin-left: 15px;
-        @apply(--layout-flex-8);
+        @apply(--layout-flex);
       }
       .image-wrapper{
-        @apply(--layout-flex-4);
+        width: 100px;
       }
       iron-image{
         width: 80px;
@@ -31,29 +38,22 @@
         
       }
       
-      .iron-selected {
-        background: #F0F0F0;
-      }
     </style>
   <template>
       <iron-ajax
         auto
-        url="/party"
-        handle-as="json"
+        url="http://api.maepaysoh.org/party?api_key=81198b7a526f1fecd20d834eed35fa6c02ad5430"
         on-response="loadParty"></iron-ajax>
-        
-        <div class="list short">
-        <iron-selector id="party" selected="{{selected}}">
-          <template is="dom-repeat" items="{{parties}}" as="party" index-as="index">
-            <paper-item>
-              <div class="image-wrapper">
-                <iron-image sizing="contain" src="[[party.PartySeal]]"></iron-image>
-              </div>
-              <span>[[party.PartyName]]</span>
-            </paper-item>
-          </template>
-        </iron-selector>
-        </div>
+            <template is="dom-repeat" items="[[parties[[" as="item">
+              <a class="item" href="[[generateRoute(index)]]">
+                <paper-item>
+                  <div class="image-wrapper">
+                    <iron-image sizing="contain" src="[[item.PartySeal]]"></iron-image>
+                  </div>
+                  <span>[[item.PartyName]]</span>
+                </paper-item>
+              </a>
+            </template>
   </template>
 
 </dom-module>
@@ -62,32 +62,18 @@
       Polymer({
         is: 'my-party',
         properties: {
-          parties: Array,
-          selected:{
-            type: Number,
-            observer: '_partySelected'
-          }
+          parties: Array
         },
+      
         generateRoute:function(index){
             return 'party/'+index;
         },
         loadParty:function(req){
-            this.parties=req.detail.response;
-        },
-        _partySelected:function(newIndex, oldIndex){
-            var page=document.querySelector('neon-animated-pages');
-              app.party=this.parties[newIndex];
-              page.selected = 1;
-              var party=document.querySelector('party-detail');
-              party.PartySeal=app.party.PartySeal;
-              party.PartyFlag=app.party.PartyFlag;
-              party.PartyName=app.party.PartyName;
-              party.PartyNameEnglish=app.party.PartyNameEnglish;
-              party.Chairman=app.party.Chairman;
-              party.Leadership=app.party.Leadership;
-              party.Region=app.party.Region;
-              party.Headquarters=app.party.Headquarters;
-
+            if(req.detail.hasOwnProperty('response') && 
+                req.detail.response._meta.status==='ok'){
+                this.parties=req.detail.response.data;
+            }
+            
         }
       });
     })();

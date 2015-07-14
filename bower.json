@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "license": "http://polymer.github.io/LICENSE.txt",
   "dependencies": {
-    "iron-elements": "PolymerElements/iron-elements#1.0.0",
-    "paper-elements": "PolymerElements/paper-elements#1.0.1",
-    "platinum-elements": "PolymerElements/platinum-elements#1.0.0",
-    "neon-elements": "PolymerElements/neon-elements#1.0.0",
-    "page": "visionmedia/page.js#~1.6.3"
+    "iron-elements": "PolymerElements/iron-elements#~1.0.0",
+    "paper-elements": "PolymerElements/paper-elements#~1.0.1",
+    "platinum-elements": "PolymerElements/platinum-elements#~1.0.0",
+    "neon-elements": "PolymerElements/neon-elements#~1.0.0",
+    "page": "visionmedia/page.js#~1.6.3",
+    "iron-list": "PolymerElements/iron-list#~1.0.0"
   },
   "devDependencies": {
     "web-component-tester": "*",
@@ -39,6 +40,7 @@
     "iron-image": "^1.0.0",
     "iron-input": "^1.0.0",
     "iron-jsonp-library": "^1.0.0",
+    "iron-list": "^1.0.0",
     "iron-localstorage": "^1.0.0",
     "iron-media-query": "^1.0.0",
     "iron-meta": "^1.0.0",
