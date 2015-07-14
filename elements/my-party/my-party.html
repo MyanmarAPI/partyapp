@@ -69,10 +69,10 @@
             return 'party/'+index;
         },
         loadParty:function(req){
-            if(req.detail.hasOwnProperty('response') && 
-                req.detail.response._meta.status==='ok'){
+            
                 this.parties=req.detail.response.data;
-            }
+                console.log('Party loaded!');
+
             
         }
       });
